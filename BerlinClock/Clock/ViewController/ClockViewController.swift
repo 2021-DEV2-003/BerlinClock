@@ -11,6 +11,8 @@ class ClockViewController: UIViewController {
     
     private let viewModel: ClockViewModel
     
+    private var timer: DispatchSourceTimer?
+    
     // MARK: - Init
     
     init(viewModel: ClockViewModel) {
@@ -37,12 +39,85 @@ class ClockViewController: UIViewController {
         setupUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getTimeAndUpdateUI()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        timer?.cancel()
+        timer = nil
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         setUpRoundedCornersForViews()
         setUpBorders()
     }
+    
+    // MARK: - Time
+    
+    func getTimeAndUpdateUI() {
+        timer = DispatchSource.makeTimerSource()
+        timer?.schedule(deadline: .now(), repeating: .seconds(1), leeway: .seconds(0))
+        timer?.setEventHandler(handler: { [weak self] in
+            guard let strongSelf = self else { return }
+            let time = strongSelf.getHoursMinutesSeconds()
+            let colors = strongSelf.viewModel.getBerlinTimeColors(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
+            DispatchQueue.main.async {
+                strongSelf.updateClockUI(secondsColor: colors.secondsColor, topHours: colors.topHours, bottomHours: colors.bottomHours, topMinutes: colors.topMinutes, bottomMinutes: colors.bottomMinutes)
+            }
+        })
+        timer?.resume()
+    }
+    
+    func getHoursMinutesSeconds() -> (hours: Int, minutes: Int, seconds: Int) {
+        let date = Date()
+        var calendar = Calendar.current
+        if let timeZone = TimeZone(identifier: "CET") {
+            calendar.timeZone = timeZone
+        }
+        let hours = calendar.component(.hour, from: date)
+        let minutes = calendar.component(.minute, from: date)
+        let seconds = calendar.component(.second, from: date)
+        return (hours, minutes, seconds)
+    }
+    
+    // MARK: - Clock UI
+    
+    func updateClockUI(secondsColor: UIColor, topHours: [UIColor], bottomHours: [UIColor], topMinutes: [UIColor], bottomMinutes: [UIColor]) {
+        secondsBlockView.backgroundColor = secondsColor
+        
+        topHoursBlocks.enumerated().forEach { (index, topHourBlock) in
+            if topHourBlock.accessibilityIdentifier == String(index + 1) {
+                let color = topHours[safe: index]
+                topHourBlock.backgroundColor = color
+            }
+        }
+        
+        bottomHoursBlocks.enumerated().forEach { (index, bottomHoursBlock) in
+            if bottomHoursBlock.accessibilityIdentifier == String(index + 1) {
+                let color = bottomHours[safe: index]
+                bottomHoursBlock.backgroundColor = color
+            }
+        }
+        
+        topMinutesBlocks.enumerated().forEach { (index, topMinutesBlock) in
+            if topMinutesBlock.accessibilityIdentifier == String(index + 1) {
+                let color = topMinutes[safe: index]
+                topMinutesBlock.backgroundColor = color
+            }
+        }
+        
+        bottomMinutesBlocks.enumerated().forEach { (index, bottomMinutesBlock) in
+            if bottomMinutesBlock.accessibilityIdentifier == String(index + 1) {
+                let color = bottomMinutes[safe: index]
+                bottomMinutesBlock.backgroundColor = color
+            }
+        }
+    }
+    
     
     // MARK: - UI
     
