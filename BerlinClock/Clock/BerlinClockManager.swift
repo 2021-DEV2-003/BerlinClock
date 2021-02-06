@@ -13,6 +13,18 @@ struct BerlinClockManager {
     private let topMinutesBlocksCount = 11
     private let totalBottomMinutesBlocksCount = 4
     
+    // MARK: - BerlinClock
+    
+    public func getBerlinClockTimeString(hours: Int, minutes: Int, seconds: Int) -> String {
+        let secondsString = getSeconds(second: seconds)
+        let hoursTopRowString = getHoursBlock(hours: hours, isTopRow: true)
+        let hoursBottomRowString = getHoursBlock(hours: hours, isTopRow: false)
+        let minutesTopRowString = getTopMinutesRow(minutes: minutes)
+        let minutesBottomRowString = getBottomMinutesRow(minutes: minutes)
+        
+        let finalHourString = secondsString + hoursTopRowString + hoursBottomRowString + minutesTopRowString + minutesBottomRowString
+        return finalHourString
+    }
     
     // MARK: - Seconds
     func getSeconds(second: Int) -> String {
