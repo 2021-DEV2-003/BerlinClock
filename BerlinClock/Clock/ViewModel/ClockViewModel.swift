@@ -16,6 +16,18 @@ struct ClockViewModel {
         self.clockManager = clockManager
     }
     
+    func getBerlinTimeColors(hours: Int, minutes: Int, seconds: Int) -> (secondsColor: UIColor, topHours: [UIColor], bottomHours: [UIColor], topMinutes: [UIColor], bottomMinutes: [UIColor]) {
+        let code = clockManager.getBerlinClockTimeString(hours: hours, minutes: minutes, seconds: seconds)
+        let colors = getColorsFromCodes(code: code)
+        
+        let secondsColor = getColorForSeconds(colors: colors)
+        let hoursTopColors = getColorsForHoursTop(colors: colors)
+        let hoursBottomColors = getColorsForHoursBottom(colors: colors)
+        let minutesTopColors = getColorsForMinutesTop(colors: colors)
+        let minutesBottomColors = getColorsForMinutesBottom(colors: colors)
+        return (secondsColor, hoursTopColors, hoursBottomColors, minutesTopColors, minutesBottomColors)
+    }
+    
     func getColorsFromCodes(code: String) -> [UIColor] {
         var colors: [UIColor] = []
         
