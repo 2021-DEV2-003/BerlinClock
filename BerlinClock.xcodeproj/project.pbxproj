@@ -10,10 +10,11 @@
 		5441B98E25CEBC61002F331E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441B98D25CEBC61002F331E /* AppDelegate.swift */; };
 		5441B99725CEBC62002F331E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5441B99625CEBC62002F331E /* Assets.xcassets */; };
 		5441B99A25CEBC62002F331E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5441B99825CEBC62002F331E /* LaunchScreen.storyboard */; };
-		5441B9A525CEBC62002F331E /* BerlinClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441B9A425CEBC62002F331E /* BerlinClockTests.swift */; };
 		5441B9B025CEBC62002F331E /* BerlinClockUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441B9AF25CEBC62002F331E /* BerlinClockUITests.swift */; };
 		5441B9C825CEBCEF002F331E /* ClockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441B9C625CEBCEF002F331E /* ClockViewController.swift */; };
 		5441B9C925CEBCEF002F331E /* ClockViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5441B9C725CEBCEF002F331E /* ClockViewController.xib */; };
+		5441B9DD25CEBF13002F331E /* BerlinClockManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441B9DC25CEBF13002F331E /* BerlinClockManager.swift */; };
+		5441B9E225CEBF3B002F331E /* BerlinClockManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5441B9E125CEBF3B002F331E /* BerlinClockManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,13 +41,14 @@
 		5441B99925CEBC62002F331E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5441B99B25CEBC62002F331E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BerlinClock/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		5441B9A025CEBC62002F331E /* BerlinClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BerlinClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5441B9A425CEBC62002F331E /* BerlinClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerlinClockTests.swift; sourceTree = "<group>"; };
 		5441B9A625CEBC62002F331E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5441B9AB25CEBC62002F331E /* BerlinClockUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BerlinClockUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5441B9AF25CEBC62002F331E /* BerlinClockUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerlinClockUITests.swift; sourceTree = "<group>"; };
 		5441B9B125CEBC62002F331E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5441B9C625CEBCEF002F331E /* ClockViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockViewController.swift; sourceTree = "<group>"; };
 		5441B9C725CEBCEF002F331E /* ClockViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClockViewController.xib; sourceTree = "<group>"; };
+		5441B9DC25CEBF13002F331E /* BerlinClockManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerlinClockManager.swift; sourceTree = "<group>"; };
+		5441B9E125CEBF3B002F331E /* BerlinClockManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerlinClockManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +109,7 @@
 		5441B9A325CEBC62002F331E /* BerlinClockTests */ = {
 			isa = PBXGroup;
 			children = (
-				5441B9A425CEBC62002F331E /* BerlinClockTests.swift */,
+				5441B9E125CEBF3B002F331E /* BerlinClockManagerTests.swift */,
 				5441B9A625CEBC62002F331E /* Info.plist */,
 			);
 			path = BerlinClockTests;
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				5441B9D125CEBD0D002F331E /* ViewController */,
+				5441B9DC25CEBF13002F331E /* BerlinClockManager.swift */,
 			);
 			path = Clock;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5441B9DD25CEBF13002F331E /* BerlinClockManager.swift in Sources */,
 				5441B98E25CEBC61002F331E /* AppDelegate.swift in Sources */,
 				5441B9C825CEBCEF002F331E /* ClockViewController.swift in Sources */,
 			);
@@ -288,7 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5441B9A525CEBC62002F331E /* BerlinClockTests.swift in Sources */,
+				5441B9E225CEBF3B002F331E /* BerlinClockManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
