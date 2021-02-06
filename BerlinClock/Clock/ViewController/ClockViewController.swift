@@ -9,8 +9,12 @@ import UIKit
 
 class ClockViewController: UIViewController {
     
+    private let viewModel: ClockViewModel
+    
     // MARK: - Init
-    init() {
+    
+    init(viewModel: ClockViewModel) {
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -40,7 +44,8 @@ class ClockViewController: UIViewController {
         setUpBorders()
     }
     
-    //MARK: - UI
+    // MARK: - UI
+    
     private func setUpRoundedCornersForViews() {
         secondsBlockView.layer.cornerRadius = secondsBlockView.bounds.size.width / 2.0
         

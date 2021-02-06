@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func setInitialViewController() {
-        let clockViewController = ClockViewController()
+        let berlinClockManager = BerlinClockManager()
+        let viewModel = ClockViewModel(clockManager: berlinClockManager)
+        let clockViewController = ClockViewController(viewModel: viewModel)
         navigationController = UINavigationController(rootViewController: clockViewController)
     }
 
