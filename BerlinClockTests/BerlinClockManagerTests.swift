@@ -56,5 +56,20 @@ class BerlinClockManagerTests: XCTestCase {
         let hoursFive = berlinClockManager?.getHoursBlock(hours: 14, isTopRow: false)
         XCTAssertEqual(hoursFive, "RRRR")
     }
+    
+    // MARK: - Minutes
+    
+    func testGetTopMinutesRow() {
+        let minutesOne = berlinClockManager?.getTopMinutesRow(minutes: 00)
+        XCTAssertEqual(minutesOne, "OOOOOOOOOOO")
+        let minutesTwo = berlinClockManager?.getTopMinutesRow(minutes: 59)
+        XCTAssertEqual(minutesTwo, "YYRYYRYYRYY")
+        let minutesThree = berlinClockManager?.getTopMinutesRow(minutes: 04)
+        XCTAssertEqual(minutesThree, "OOOOOOOOOOO")
+        let minutesFour = berlinClockManager?.getTopMinutesRow(minutes: 23)
+        XCTAssertEqual(minutesFour, "YYRYOOOOOOO")
+        let minutesFive = berlinClockManager?.getTopMinutesRow(minutes: 35)
+        XCTAssertEqual(minutesFive, "YYRYYRYOOOO")
+    }
 
 }

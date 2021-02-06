@@ -10,6 +10,7 @@ import Foundation
 struct BerlinClockManager {
     
     private let hoursBlockCount = 4
+    private let topMinutesBlocksCount = 11
     
     
     // MARK: - Seconds
@@ -25,5 +26,26 @@ struct BerlinClockManager {
         let buildRedHoursBlocksString = String(repeating: "R", count: redHourBlocks)
         let buildEmptyHoursBlocksString = String(repeating: "O", count: reminderHours)
         return buildRedHoursBlocksString + buildEmptyHoursBlocksString
+    }
+    
+    // MARK: - Minutes
+    
+    func getTopMinutesRow(minutes: Int) -> String {
+        let topMinutesBlocks = minutes / 5
+        var minutesString = ""
+        let minutesBlocksRangeArray = Array(1...topMinutesBlocksCount)
+        
+        minutesBlocksRangeArray.forEach { (index) in
+            if index <= topMinutesBlocks {
+                minutesString.append(getMinutesBlockColor(index: index))
+            } else {
+                minutesString.append("O")
+            }
+        }
+        return minutesString
+    }
+    
+    private func getMinutesBlockColor(index: Int) -> String {
+        return (index % 3 == 0) ? "R" : "Y"
     }
 }
