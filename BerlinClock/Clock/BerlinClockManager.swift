@@ -9,8 +9,7 @@ import Foundation
 
 struct BerlinClockManager {
     
-    private var totalFiveHourBlocks = 4
-    private var totalBottomHourBlocks = 4
+    private let hoursBlockCount = 4
     
     
     // MARK: - Seconds
@@ -20,23 +19,11 @@ struct BerlinClockManager {
     
     // MARK: - Hours
     
-    func getFiveHoursRow(hours: Int) -> String {
-        let redHourBlocks = hours / 5
-        let reminderHours = totalFiveHourBlocks - redHourBlocks
-        
-        let buildRedHours = String(repeating: "R", count: redHourBlocks)
-        let buildEmptyHours = String(repeating: "O", count: reminderHours)
-        let topHoursRow = buildRedHours + buildEmptyHours
-        return topHoursRow
-    }
-    
-    func getBottomHoursRow(hours: Int) -> String {
-        let redHourBlocks = hours % 5
-        let reminderHours = totalBottomHourBlocks - redHourBlocks
-        
-        let buildRedHours = String(repeating: "R", count: redHourBlocks)
-        let buildEmptyHours = String(repeating: "O", count: reminderHours)
-        let bottomHoursRow = buildRedHours + buildEmptyHours
-        return bottomHoursRow
+    func getHoursBlock(hours: Int, isTopRow: Bool) -> String {
+        let redHourBlocks = isTopRow ? hours / 5 : hours % 5
+        let reminderHours = hoursBlockCount - redHourBlocks
+        let buildRedHoursBlocksString = String(repeating: "R", count: redHourBlocks)
+        let buildEmptyHoursBlocksString = String(repeating: "O", count: reminderHours)
+        return buildRedHoursBlocksString + buildEmptyHoursBlocksString
     }
 }

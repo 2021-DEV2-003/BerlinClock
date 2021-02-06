@@ -32,28 +32,28 @@ class BerlinClockManagerTests: XCTestCase {
     // MARK: - Hours
     
     func testGetFiveHoursRow() {
-        let hoursOne = berlinClockManager?.getFiveHoursRow(hours: 00)
+        let hoursOne = berlinClockManager?.getHoursBlock(hours: 00, isTopRow: true)
         XCTAssertEqual(hoursOne, "OOOO")
-        let hoursTwo = berlinClockManager?.getFiveHoursRow(hours: 23)
+        let hoursTwo = berlinClockManager?.getHoursBlock(hours: 23, isTopRow: true)
         XCTAssertEqual(hoursTwo, "RRRR")
-        let hoursThree = berlinClockManager?.getFiveHoursRow(hours: 02)
+        let hoursThree = berlinClockManager?.getHoursBlock(hours: 02, isTopRow: true)
         XCTAssertEqual(hoursThree, "OOOO")
-        let hoursFour = berlinClockManager?.getFiveHoursRow(hours: 08)
+        let hoursFour = berlinClockManager?.getHoursBlock(hours: 08, isTopRow: true)
         XCTAssertEqual(hoursFour, "ROOO")
-        let hoursFive = berlinClockManager?.getFiveHoursRow(hours: 16)
+        let hoursFive = berlinClockManager?.getHoursBlock(hours: 16, isTopRow: true)
         XCTAssertEqual(hoursFive, "RRRO")
     }
     
     func testGetBottomHoursRow() {
-        let hoursOne = berlinClockManager?.getBottomHoursRow(hours: 00)
+        let hoursOne = berlinClockManager?.getHoursBlock(hours: 00, isTopRow: false)
         XCTAssertEqual(hoursOne, "OOOO")
-        let hoursTwo = berlinClockManager?.getBottomHoursRow(hours: 23)
+        let hoursTwo = berlinClockManager?.getHoursBlock(hours: 23, isTopRow: false)
         XCTAssertEqual(hoursTwo, "RRRO")
-        let hoursThree = berlinClockManager?.getBottomHoursRow(hours: 02)
+        let hoursThree = berlinClockManager?.getHoursBlock(hours: 02, isTopRow: false)
         XCTAssertEqual(hoursThree, "RROO")
-        let hoursFour = berlinClockManager?.getBottomHoursRow(hours: 08)
+        let hoursFour = berlinClockManager?.getHoursBlock(hours: 08, isTopRow: false)
         XCTAssertEqual(hoursFour, "RRRO")
-        let hoursFive = berlinClockManager?.getBottomHoursRow(hours: 14)
+        let hoursFive = berlinClockManager?.getHoursBlock(hours: 14, isTopRow: false)
         XCTAssertEqual(hoursFive, "RRRR")
     }
 
