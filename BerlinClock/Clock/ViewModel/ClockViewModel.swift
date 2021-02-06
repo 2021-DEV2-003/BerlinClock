@@ -48,4 +48,12 @@ struct ClockViewModel {
     func getColorsForHoursBottom(colors: [UIColor]) -> [UIColor] {
         return Array(colors[5..<9])
     }
+    
+    func getColorsForMinutesTop(colors: [UIColor]) -> [UIColor] {
+        return Array(colors[9..<20])
+    }
+    
+    func getColorsForMinutesBottom(colors: [UIColor]) -> [UIColor] {
+        return Array(colors[20...23])
+    }
 }

@@ -50,6 +50,18 @@ class ClockViewModelTests: XCTestCase {
         XCTAssertEqual(hoursTopColors, [.red, .white, .white, .white])
     }
     
+    func testGetColorsTopMinutes() {
+        let colors: [UIColor] = [.yellow, .red, .red, .red, .white, .red, .white, .white, .white, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .white, .white, .white, .white, .white]
+        let minutesTopColors = clockViewModel?.getColorsForMinutesTop(colors: colors)
+        XCTAssertEqual(minutesTopColors, [.yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .white])
+    }
+    
+    func testGetColorsBottomMinutes() {
+        let colors: [UIColor] = [.yellow, .red, .red, .red, .white, .red, .white, .white, .white, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .white, .white, .white, .white, .white]
+        let minutesBottomColors = clockViewModel?.getColorsForMinutesBottom(colors: colors)
+        XCTAssertEqual(minutesBottomColors, [.white, .white, .white, .white])
+    }
+    
     
     
 }
