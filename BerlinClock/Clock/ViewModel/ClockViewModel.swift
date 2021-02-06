@@ -28,6 +28,14 @@ struct ClockViewModel {
         return (secondsColor, hoursTopColors, hoursBottomColors, minutesTopColors, minutesBottomColors)
     }
     
+    func getBerlinTimeCode(hours: Int, minutes: Int, seconds: Int) -> String {
+        return clockManager.getBerlinClockTimeString(hours: hours, minutes: minutes, seconds: seconds)
+    }
+    
+    func getDigitalTimeFromCode(code: String) -> String {
+        return clockManager.getDigitalTimeFromBerlinCode(code: code)
+    }
+    
     func getColorsFromCodes(code: String) -> [UIColor] {
         var colors: [UIColor] = []
         

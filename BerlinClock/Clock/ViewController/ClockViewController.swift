@@ -31,7 +31,8 @@ class ClockViewController: UIViewController {
     @IBOutlet var bottomHoursBlocks: [UIView]!
     @IBOutlet var topMinutesBlocks: [UIView]!
     @IBOutlet var bottomMinutesBlocks: [UIView]!
-
+    @IBOutlet weak var digitalTimeLabel: UILabel!
+    
     // MARK: - Life cycle methods
     
     override func viewDidLoad() {
@@ -64,9 +65,12 @@ class ClockViewController: UIViewController {
         timer?.setEventHandler(handler: { [weak self] in
             guard let strongSelf = self else { return }
             let time = strongSelf.getHoursMinutesSeconds()
+            let code = strongSelf.viewModel.getBerlinTimeCode(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
             let colors = strongSelf.viewModel.getBerlinTimeColors(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
+            let digitalTime = strongSelf.viewModel.getDigitalTimeFromCode(code: code)
             DispatchQueue.main.async {
                 strongSelf.updateClockUI(secondsColor: colors.secondsColor, topHours: colors.topHours, bottomHours: colors.bottomHours, topMinutes: colors.topMinutes, bottomMinutes: colors.bottomMinutes)
+                strongSelf.updateTimeLabel(timeText: digitalTime)
             }
         })
         timer?.resume()
@@ -116,6 +120,10 @@ class ClockViewController: UIViewController {
                 bottomMinutesBlock.backgroundColor = color
             }
         }
+    }
+    
+    func updateTimeLabel(timeText: String) {
+        digitalTimeLabel.text = timeText
     }
     
     

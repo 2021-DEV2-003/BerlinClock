@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ClockViewController" customModule="BerlinClock" customModuleProvider="target">
             <connections>
+                <outlet property="digitalTimeLabel" destination="IVS-d7-zee" id="P11-m8-7Ud"/>
                 <outlet property="secondsBlockView" destination="ytA-is-uEe" id="XV3-U4-vRJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="topHoursBlocks" destination="XVa-fu-9iO" collectionClass="NSMutableArray" id="p7H-zU-IYJ"/>
