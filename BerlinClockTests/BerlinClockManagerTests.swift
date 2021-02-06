@@ -19,5 +19,14 @@ class BerlinClockManagerTests: XCTestCase {
     override func tearDown() {
         berlinClockManager = nil
     }
+    
+    // MARK: - Seconds
+    
+    func testGetSeconds() {
+        let evenSeconds = berlinClockManager?.getSeconds(second: 00)
+        XCTAssertEqual(evenSeconds, "Y")
+        let oddSeconds = berlinClockManager?.getSeconds(second: 59)
+        XCTAssertEqual(oddSeconds, "O")
+    }
 
 }

@@ -9,4 +9,10 @@ import Foundation
 
 struct BerlinClockManager {
     
+    
+    func getSeconds(second: Int) -> String {
+        return (second % 2 == 0) ? "Y" : "O"
+    }
+    
+    
 }
