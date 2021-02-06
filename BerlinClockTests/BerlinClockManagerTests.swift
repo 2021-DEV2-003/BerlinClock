@@ -71,5 +71,18 @@ class BerlinClockManagerTests: XCTestCase {
         let minutesFive = berlinClockManager?.getTopMinutesRow(minutes: 35)
         XCTAssertEqual(minutesFive, "YYRYYRYOOOO")
     }
+    
+    func testGetBottomMinutesRow() {
+        let minutesOne = berlinClockManager?.getBottomMinutesRow(minutes: 00)
+        XCTAssertEqual(minutesOne, "OOOO")
+        let minutesTwo = berlinClockManager?.getBottomMinutesRow(minutes: 59)
+        XCTAssertEqual(minutesTwo, "YYYY")
+        let minutesThree = berlinClockManager?.getBottomMinutesRow(minutes: 32)
+        XCTAssertEqual(minutesThree, "YYOO")
+        let minutesFour = berlinClockManager?.getBottomMinutesRow(minutes: 34)
+        XCTAssertEqual(minutesFour, "YYYY")
+        let minutesFive = berlinClockManager?.getBottomMinutesRow(minutes: 35)
+        XCTAssertEqual(minutesFive, "OOOO")
+    }
 
 }
