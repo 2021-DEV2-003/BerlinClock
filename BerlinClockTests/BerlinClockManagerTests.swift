@@ -97,5 +97,18 @@ class BerlinClockManagerTests: XCTestCase {
         let clockFour = berlinClockManager?.getBerlinClockTimeString(hours: 11, minutes: 37, seconds: 01)
         XCTAssertEqual(clockFour, "ORROOROOOYYRYYRYOOOOYYOO")
     }
+    
+    // MARK: - Berlin Clock to Digital Clock
+    
+    func testGetDigitalTimeFromBerlinCode() {
+        let clockOne = berlinClockManager?.getDigitalTimeFromBerlinCode(code: "YOOOOOOOOOOOOOOOOOOOOOOO")
+        XCTAssertEqual(clockOne, "00:00")
+        let clockTwo = berlinClockManager?.getDigitalTimeFromBerlinCode(code: "ORRRRRRROYYRYYRYYRYYYYYY")
+        XCTAssertEqual(clockTwo, "23:59")
+        let clockThree = berlinClockManager?.getDigitalTimeFromBerlinCode(code: "YRRROROOOYYRYYRYYRYOOOOO")
+        XCTAssertEqual(clockThree, "16:50")
+        let clockFour = berlinClockManager?.getDigitalTimeFromBerlinCode(code: "ORROOROOOYYRYYRYOOOOYYOO")
+        XCTAssertEqual(clockFour, "11:37")
+    }
 
 }

@@ -26,6 +26,31 @@ struct BerlinClockManager {
         return finalHourString
     }
     
+    public func getDigitalTimeFromBerlinCode(code: String) -> String {
+        let nonSecondsCode = String(code.dropFirst())
+        
+        var topHoursCode = nonSecondsCode[0..<4]
+        var bottomHoursCode = nonSecondsCode[4..<8]
+        var topMinutesCode = nonSecondsCode[8..<19]
+        var bottomMinutesCode = nonSecondsCode[19..<23]
+        
+        topHoursCode = topHoursCode.replacingOccurrences(of: "O", with: "")
+        let topHours = topHoursCode.count * 5
+        bottomHoursCode = bottomHoursCode.replacingOccurrences(of: "O", with: "")
+        let bottomHours = bottomHoursCode.count
+        
+        let totalHours = String(format: "%02d", topHours + bottomHours)
+        
+        topMinutesCode = topMinutesCode.replacingOccurrences(of: "O", with: "")
+        let topMinutes = topMinutesCode.count * 5
+        bottomMinutesCode = bottomMinutesCode.replacingOccurrences(of: "O", with: "")
+        let bottomMinutes = bottomMinutesCode.count
+        
+        let totalMinutes = String(format: "%02d", topMinutes + bottomMinutes)
+        
+        return totalHours + ":" + totalMinutes
+    }
+    
     // MARK: - Seconds
     func getSeconds(second: Int) -> String {
         return (second % 2 == 0) ? "Y" : "O"
