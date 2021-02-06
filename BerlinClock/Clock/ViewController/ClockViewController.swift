@@ -30,7 +30,7 @@ class ClockViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
     }
     
     override func viewWillLayoutSubviews() {
@@ -83,5 +83,9 @@ class ClockViewController: UIViewController {
             bottomMinuteBlock.layer.borderWidth = 2.0
             bottomMinuteBlock.layer.borderColor = UIColor.black.cgColor
         }
+    }
+    
+    private func setupUI() {
+        self.navigationItem.title = "Berlin Clock"
     }
 }
