@@ -33,4 +33,13 @@ struct ClockViewModel {
         }
         return colors
     }
+    
+    func getColorForSeconds(colors: [UIColor]) -> UIColor {
+        guard let firstColor = colors.first else {
+            return .clear
+        }
+        return firstColor
+    }
+    
+    //then methods to extacts seconds, hours, minutes. total count is 23
 }
