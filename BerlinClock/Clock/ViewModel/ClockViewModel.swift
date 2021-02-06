@@ -15,4 +15,22 @@ struct ClockViewModel {
     init(clockManager: BerlinClockManager) {
         self.clockManager = clockManager
     }
+    
+    func getColorsFromCodes(code: String) -> [UIColor] {
+        var colors: [UIColor] = []
+        
+        code.forEach { (codeColor) in
+            switch codeColor {
+                case "Y":
+                    colors.append(.yellow)
+                case "R":
+                    colors.append(.red)
+                case  "O":
+                    colors.append(.white)
+                default:
+                    break
+            }
+        }
+        return colors
+    }
 }

@@ -21,4 +21,13 @@ class ClockViewModelTests: XCTestCase {
         clockViewModel = nil
     }
     
+    // MARK: - Codes to Colors
+    
+    func testGetColorsFromCodes() {
+        let colorsOne = clockViewModel?.getColorsFromCodes(code: "YOOOOOOOOOOOOOOOOOOOOOOO")
+        XCTAssertEqual(colorsOne, [.yellow, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white, .white])
+        let colorsTwo = clockViewModel?.getColorsFromCodes(code: "YRRROROOOYYRYYRYYRYOOOOO")
+        XCTAssertEqual(colorsTwo, [.yellow, .red, .red, .red, .white, .red, .white, .white, .white, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .yellow, .red, .yellow, .white, .white, .white, .white, .white])
+    }
+    
 }
