@@ -43,5 +43,18 @@ class BerlinClockManagerTests: XCTestCase {
         let hoursFive = berlinClockManager?.getFiveHoursRow(hours: 16)
         XCTAssertEqual(hoursFive, "RRRO")
     }
+    
+    func testGetBottomHoursRow() {
+        let hoursOne = berlinClockManager?.getBottomHoursRow(hours: 00)
+        XCTAssertEqual(hoursOne, "OOOO")
+        let hoursTwo = berlinClockManager?.getBottomHoursRow(hours: 23)
+        XCTAssertEqual(hoursTwo, "RRRO")
+        let hoursThree = berlinClockManager?.getBottomHoursRow(hours: 02)
+        XCTAssertEqual(hoursThree, "RROO")
+        let hoursFour = berlinClockManager?.getBottomHoursRow(hours: 08)
+        XCTAssertEqual(hoursFour, "RRRO")
+        let hoursFive = berlinClockManager?.getBottomHoursRow(hours: 14)
+        XCTAssertEqual(hoursFive, "RRRR")
+    }
 
 }
