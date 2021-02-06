@@ -36,9 +36,9 @@
 /* Begin PBXFileReference section */
 		5441B98A25CEBC61002F331E /* BerlinClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BerlinClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5441B98D25CEBC61002F331E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5441B99625CEBC62002F331E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5441B99625CEBC62002F331E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = BerlinClock/SupportingFiles/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		5441B99925CEBC62002F331E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		5441B99B25CEBC62002F331E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5441B99B25CEBC62002F331E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = BerlinClock/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		5441B9A025CEBC62002F331E /* BerlinClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BerlinClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5441B9A425CEBC62002F331E /* BerlinClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BerlinClockTests.swift; sourceTree = "<group>"; };
 		5441B9A625CEBC62002F331E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,10 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				5441B98D25CEBC61002F331E /* AppDelegate.swift */,
-				5441B99625CEBC62002F331E /* Assets.xcassets */,
-				5441B99825CEBC62002F331E /* LaunchScreen.storyboard */,
-				5441B99B25CEBC62002F331E /* Info.plist */,
 				5441B9CD25CEBCF6002F331E /* Clock */,
+				5441B9D525CEBE00002F331E /* SupportingFiles */,
 			);
 			path = BerlinClock;
 			sourceTree = "<group>";
@@ -139,6 +137,16 @@
 				5441B9C725CEBCEF002F331E /* ClockViewController.xib */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		5441B9D525CEBE00002F331E /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				5441B99625CEBC62002F331E /* Assets.xcassets */,
+				5441B99825CEBC62002F331E /* LaunchScreen.storyboard */,
+				5441B99B25CEBC62002F331E /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,7 +449,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BerlinClock/Info.plist;
+				INFOPLIST_FILE = BerlinClock/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -459,7 +467,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = BerlinClock/Info.plist;
+				INFOPLIST_FILE = BerlinClock/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
