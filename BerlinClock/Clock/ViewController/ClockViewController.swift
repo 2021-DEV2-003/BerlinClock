@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ClockViewController: UIViewController {
+final class ClockViewController: UIViewController {
     
     private let viewModel: ClockViewModel
     
