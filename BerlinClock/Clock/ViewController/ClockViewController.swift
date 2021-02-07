@@ -59,14 +59,14 @@ class ClockViewController: UIViewController {
     
     // MARK: - Time
     
-    func getTimeAndUpdateUI() {
+    private func getTimeAndUpdateUI() {
         timer = DispatchSource.makeTimerSource()
         timer?.schedule(deadline: .now(), repeating: .seconds(1), leeway: .seconds(0))
         timer?.setEventHandler(handler: { [weak self] in
             guard let strongSelf = self else { return }
             let time = strongSelf.getHoursMinutesSeconds()
             let code = strongSelf.viewModel.getBerlinTimeCode(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
-            let colors = strongSelf.viewModel.getBerlinTimeColors(hours: time.hours, minutes: time.minutes, seconds: time.seconds)
+            let colors = strongSelf.viewModel.getBerlinTimeColors(code: code)
             let digitalTime = strongSelf.viewModel.getDigitalTimeFromCode(code: code)
             DispatchQueue.main.async {
                 strongSelf.updateClockUI(secondsColor: colors.secondsColor, topHours: colors.topHours, bottomHours: colors.bottomHours, topMinutes: colors.topMinutes, bottomMinutes: colors.bottomMinutes)
@@ -76,7 +76,7 @@ class ClockViewController: UIViewController {
         timer?.resume()
     }
     
-    func getHoursMinutesSeconds() -> (hours: Int, minutes: Int, seconds: Int) {
+    private func getHoursMinutesSeconds() -> (hours: Int, minutes: Int, seconds: Int) {
         let date = Date()
         var calendar = Calendar.current
         if let timeZone = TimeZone(identifier: "CET") {
@@ -90,7 +90,7 @@ class ClockViewController: UIViewController {
     
     // MARK: - Clock UI
     
-    func updateClockUI(secondsColor: UIColor, topHours: [UIColor], bottomHours: [UIColor], topMinutes: [UIColor], bottomMinutes: [UIColor]) {
+    private func updateClockUI(secondsColor: UIColor, topHours: [UIColor], bottomHours: [UIColor], topMinutes: [UIColor], bottomMinutes: [UIColor]) {
         secondsBlockView.backgroundColor = secondsColor
         
         topHoursBlocks.enumerated().forEach { (index, topHourBlock) in
@@ -122,7 +122,7 @@ class ClockViewController: UIViewController {
         }
     }
     
-    func updateTimeLabel(timeText: String) {
+    private func updateTimeLabel(timeText: String) {
         digitalTimeLabel.text = timeText
     }
     
